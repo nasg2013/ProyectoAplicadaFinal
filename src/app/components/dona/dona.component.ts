@@ -9,7 +9,7 @@ import { ChartType } from 'chart.js';
   ]
 })
 export class DonaComponent  {
-
+ 
    // Doughnut
    @Input('labels') public doughnutChartLabels: Label[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
    @Input('data') public doughnutChartData: MultiDataSet = [

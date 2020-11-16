@@ -7,6 +7,7 @@ import { IncrementadorComponent } from './incrementador/incrementador.component'
 import { FormsModule } from '@angular/forms';
 import { DonaComponent } from './dona/dona.component';
 import { ModalImageComponent } from './modal-image/modal-image.component';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
 
 
 
@@ -14,7 +15,8 @@ import { ModalImageComponent } from './modal-image/modal-image.component';
   declarations: [
     IncrementadorComponent,
     DonaComponent,
-    ModalImageComponent
+    ModalImageComponent,
+    BarChartComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { ModalImageComponent } from './modal-image/modal-image.component';
   exports:[
     IncrementadorComponent,
     DonaComponent,
-    ModalImageComponent
+    ModalImageComponent,
+    BarChartComponent
   ]
 })
 export class ComponentsModule { }
