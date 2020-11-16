@@ -1,0 +1,26 @@
+<div [class.oculto]="modalImagenService.ocultarModal" class="fondo-modal-imagen">
+    <div id="responsive-modal" class="modal fade show modal-style" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Administrar imagen</h4>
+                    <button (click)="cerrarModal()" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <h3>Cargar imagen</h3>
+
+                    <div class="text-center m-4">
+                        <img *ngIf="!imgTemp" [src]="modalImagenService.img" class="img-avatar">
+                        <img *ngIf="imgTemp" [src]="imgTemp" class="img-avatar">
+                    </div>
+                    <input type="file" (change)="cambiarImagen($event.target.files[0])">
+
+                </div>
+                <div class="modal-footer">
+                    <button (click)="cerrarModal()" type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cerrar</button>
+                    <button (click)="subirImagen()" type="button" class="btn btn-danger waves-effect waves-light">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
