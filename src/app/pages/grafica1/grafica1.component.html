@@ -1,11 +1,27 @@
 <div class="row">
 
     <div class="col-6">
-        <app-dona title="Matrícula" [colors]="colors1" [data]="data1" [labels]="labels1"></app-dona>
+        <app-dona title="Matrícula Dona" [colors]="colors1" [data]="data1" [labels]="labels1"></app-dona>
     </div>
 
     <div class="col-6">
-        <app-dona title="Estudiantes" [data]="data1" [labels]="labels1"></app-dona>
+        <app-dona title="Estudiantes Dona" [data]="data1" [labels]="labels1"></app-dona>
     </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-6">
+        <!-- Datos por parametro -->
+        <app-bar-chart title="Matrícula Barras" [data]="dataBarras" [labels]="labelsBarras"></app-bar-chart>
+    </div>
+
+    <div class="col-6">
+        <!-- Datos por defecto -->
+        <app-bar-chart title="Estudiantes Barras"></app-bar-chart>
+    </div>
+
+
 
 </div>
