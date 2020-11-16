@@ -1,0 +1,85 @@
+<div class="row animate fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <!-- <input #txtTermino type="text" class="form-control" placeholder="Buscar usuario" /> -->
+
+                <div class="input-group">
+                    <input name="txtTermino" #txtTermino (keyup.enter)="buscar(txtTermino.value)" type="text" class="form-control" placeholder="Buscar usuario...">
+                    <span class="input-group-btn">
+                        <button (click)="buscar(txtTermino.value)" class="btn btn-info" type="submit">Buscar</button>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="cargando" class="row animate fadeIn fast">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0"> Por favor espere...</p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!cargando" class="row animate fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Total de usuarios ({{ totalUsuarios }})</h4>
+                <h6 class="card-subtitle">Usuarios registrados en aplicación</h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="w100">Imagen</th>
+                                <th>Correo</th>
+                                <th>Nombre</th>
+                                <th class="w130">Role</th>
+                                <th>Autentificación</th>
+                                <th class="text-nowrap w100">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuario of usuarios">
+                                <td class="text-center">
+                                    <img (click)="abrirModal(usuario)" [src]="usuario.imageUrl" alt="Imagen de perfil" class="avatar cursor">
+                                </td>
+                                <td>{{ usuario.email }}</td>
+                                <td>{{ usuario.nombre }}</td>
+                                <td>
+                                    <select (change)="CambiarRole(usuario)" [(ngModel)]="usuario.role" class="form-control custom-select">
+                                        <option value="USER_ROLE"> User </option>
+                                        <option value="USER_ADMIN"> Admin </option>
+                                    </select>
+                                </td>
+                                <td class="text-center">
+                                    <span *ngIf="!usuario.google" class="label label-info">Email</span>
+                                    <span *ngIf="usuario.google" class="label label-danger">Google</span> </td>
+                                <td class="text-nowrap">
+                                    <a (click)="eliminarUsuario(usuario)" data-toggle="tooltip" data-original-title="Borrar" class="cursor">
+                                        <i class="fa fa-close text-danger"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div *ngIf="txtTermino.value.length === 0 || txtTermino.value.trim() === ''">
+                    <button (click)="cambiarPagina(-5)" class="btn btn-secondary m-1"> Anteriores </button>
+                    <button (click)="cambiarPagina(5)" class="btn btn-secondary m-1"> Siguientes </button>
+                    <div class="dataTables_info m-2" id="example_info" aria-live="polite">
+                        Pag ({{ (desde / 5) + 1}} de {{ totalUsuarios / 5 | number:'1.0-0' }})
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

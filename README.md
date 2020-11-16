@@ -1,5 +1,3 @@
-#Gráficos
-
 Este archivo recibe las graficas por parametro
 src\app\pages\grafica1
 
